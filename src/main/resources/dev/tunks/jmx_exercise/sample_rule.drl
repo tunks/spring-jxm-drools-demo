@@ -1,0 +1,23 @@
+//created on: Nov 6, 2018
+package dev.tunks.jmx_exercise
+
+//list any import classes here.
+
+
+
+//declare any global variables here
+
+
+import com.att.ssot.model.Incident;
+
+rule "Your First Rule"
+    when
+      $incident: Incident()
+    then
+       System.out.println("Incident inserted "+ $incident);
+end
+
+
+query getIncidentByName(String $inc_name) 
+      $incident : Incident(name == $inc_name, $name: name, $alarm_count: numberOfAlarms, $enet: enetSwitch);
+end
